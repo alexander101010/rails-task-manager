@@ -1,0 +1,18 @@
+<h2>List dem tasks</h2>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <% if task.completed == true %>
+        <i class="fas fa-check-square"></i>
+        <% elsif task.completed == false %>
+        <i class="fas fa-square"></i>
+      <% end %>
+      | <%= link_to "#{task.title}", task_path(task)%> |
+      <%= link_to "Delete", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "+ Add a new task", tasks_new_path %>
+
